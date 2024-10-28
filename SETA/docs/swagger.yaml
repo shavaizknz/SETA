@@ -1,0 +1,240 @@
+definitions:
+  controller.DepositRequest:
+    properties:
+      account_id:
+        type: string
+      amount:
+        type: string
+    type: object
+  controller.UpdateTransactionRequest:
+    properties:
+      account_id:
+        type: string
+      status:
+        $ref: '#/definitions/model.TransactionStatus'
+      transaction_id:
+        type: string
+    type: object
+  model.DefaultError:
+    properties:
+      error:
+        type: string
+    type: object
+  model.DefaultResponse:
+    properties:
+      data: {}
+    type: object
+  model.TransactionData:
+    properties:
+      account_id:
+        type: string
+      amount:
+        type: string
+      status:
+        $ref: '#/definitions/model.TransactionStatus'
+      transaction_id:
+        type: string
+      type:
+        $ref: '#/definitions/model.TransactionType'
+    type: object
+  model.TransactionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/model.TransactionData'
+    type: object
+  model.TransactionStatus:
+    enum:
+    - success
+    - failed
+    - pending
+    type: string
+    x-enum-varnames:
+    - TransactionStatusSuccess
+    - TransactionStatusFailed
+    - TransactionStatusPending
+  model.TransactionType:
+    enum:
+    - deposit
+    - withdraw
+    type: string
+    x-enum-varnames:
+    - TransactionTypeDeposit
+    - TransactionTypeWithdraw
+host: localhost:8080/
+info:
+  contact: {}
+  description: This is a payment gateway API doc for SETA
+  title: SETA API
+  version: "1.0"
+paths:
+  /api/v1/deposit:
+    post:
+      consumes:
+      - application/json
+      description: Api will return status 200 if the transaction is successful, 400
+        if the request is invalid and 500 if there is an internal server error
+      parameters:
+      - description: Transaction Request
+        in: body
+        name: TransactionRequest
+        required: true
+        schema:
+          $ref: '#/definitions/controller.DepositRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.TransactionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/model.DefaultError'
+            - properties:
+                error:
+                  type: string
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/model.DefaultError'
+            - properties:
+                error:
+                  type: string
+              type: object
+      summary: API To create a deposit transaction
+      tags:
+      - Transaction
+  /api/v1/transaction:
+    put:
+      consumes:
+      - application/json
+      description: Api will return status 200 if the transaction is updated, 400 if
+        the request is invalid and 500 if there is an internal server error
+      parameters:
+      - description: Transaction Request
+        in: body
+        name: TransactionRequest
+        required: true
+        schema:
+          $ref: '#/definitions/controller.UpdateTransactionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/model.DefaultResponse'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/model.DefaultError'
+            - properties:
+                error:
+                  type: string
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/model.DefaultError'
+            - properties:
+                error:
+                  type: string
+              type: object
+      summary: API To update a transaction
+      tags:
+      - Transaction
+  /api/v1/transaction/{transaction_id}:
+    get:
+      consumes:
+      - application/json
+      description: Api will return status 200 if the transaction is found, 404 if
+        the transaction is not found and 500 if there is an internal server error
+      parameters:
+      - description: Transaction ID
+        in: path
+        name: transaction_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.TransactionResponse'
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/model.DefaultError'
+            - properties:
+                error:
+                  type: string
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/model.DefaultError'
+            - properties:
+                error:
+                  type: string
+              type: object
+      summary: API To get a transaction
+      tags:
+      - Transaction
+  /api/v1/withdraw:
+    post:
+      consumes:
+      - application/json
+      description: Api will return status 200 if the transaction is successful, 400
+        if the request is invalid and 500 if there is an internal server error
+      parameters:
+      - description: Transaction Request
+        in: body
+        name: TransactionRequest
+        required: true
+        schema:
+          $ref: '#/definitions/controller.DepositRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.TransactionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/model.DefaultError'
+            - properties:
+                error:
+                  type: string
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/model.DefaultError'
+            - properties:
+                error:
+                  type: string
+              type: object
+      summary: API To create a withdraw transaction
+      tags:
+      - Transaction
+schemes:
+- http
+swagger: "2.0"

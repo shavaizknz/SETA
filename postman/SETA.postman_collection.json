@@ -1,0 +1,382 @@
+{
+	"info": {
+		"_postman_id": "b6cd3c1a-54a8-4b14-97a0-9e9af4588c4b",
+		"name": "SETA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9506539"
+	},
+	"item": [
+		{
+			"name": "Deposit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"account_id\": \"801921dd-31e1-45b3-a177-bef5964de42d\",\n    \"amount\": 350\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://eac422c8-0b3c-400a-ba18-eab7b2b66050.mock.pstmn.io/deposit",
+					"protocol": "https",
+					"host": [
+						"eac422c8-0b3c-400a-ba18-eab7b2b66050",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"deposit"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Deposit JSON",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_id\": \"801921dd-31e1-45b3-a177-bef5964de42d\",\n    \"amount\": 350\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eac422c8-0b3c-400a-ba18-eab7b2b66050.mock.pstmn.io/deposit",
+							"protocol": "https",
+							"host": [
+								"eac422c8-0b3c-400a-ba18-eab7b2b66050",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"deposit"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"account_id\": \"801921dd-31e1-45b3-a177-bef5964de42d\",\n        \"amount\": 350,\n        \"transaction_id\": \"bc90c92d-ae4e-4cf3-8de4-f6f23fed9766\",\n        \"status\": \"pending\",\n        \"type\": \"deposit\"\n    }\n}"
+				},
+				{
+					"name": "Deposit XML",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n <root>\n     <AccountID>801921dd-31e1-45b3-a177-bef5964de42d</AccountID>\n     <Amount>350</Amount>\n </root>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eac422c8-0b3c-400a-ba18-eab7b2b66050.mock.pstmn.io/deposit",
+							"protocol": "https",
+							"host": [
+								"eac422c8-0b3c-400a-ba18-eab7b2b66050",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"deposit"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/xml",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "<Data>\n    <AccountID>801921dd-31e1-45b3-a177-bef5964de42d</AccountID>\n    <Amount>350</Amount>\n    <TransactionID>bc90c92d-ae4e-4cf3-8de4-f6f23fed9766</TransactionID>\n    <Status>pending</Status>\n    <Type>deposit</Type>\n</Data>\n"
+				}
+			]
+		},
+		{
+			"name": "Withdraw",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"account_id\": \"801921dd-31e1-45b3-a177-bef5964de42d\",\n    \"amount\": 350\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://eac422c8-0b3c-400a-ba18-eab7b2b66050.mock.pstmn.io/withdraw",
+					"protocol": "https",
+					"host": [
+						"eac422c8-0b3c-400a-ba18-eab7b2b66050",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"withdraw"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Withdraw JSON",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account_id\": \"801921dd-31e1-45b3-a177-bef5964de42d\",\n    \"amount\": 350\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eac422c8-0b3c-400a-ba18-eab7b2b66050.mock.pstmn.io/withdraw",
+							"protocol": "https",
+							"host": [
+								"eac422c8-0b3c-400a-ba18-eab7b2b66050",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"withdraw"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"account_id\": \"801921dd-31e1-45b3-a177-bef5964de42d\",\n        \"amount\": 350,\n        \"transaction_id\": \"cad1f8bf-de7e-495f-b4e1-2a65b34b050e\",\n        \"status\": \"pending\",\n        \"type\": \"withdraw\"\n    }\n}"
+				},
+				{
+					"name": "Withdraw XML",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n <root>\n     <AccountID>801921dd-31e1-45b3-a177-bef5964de42d</AccountID>\n     <Amount>350</Amount>\n </root>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://eac422c8-0b3c-400a-ba18-eab7b2b66050.mock.pstmn.io/withdraw",
+							"protocol": "https",
+							"host": [
+								"eac422c8-0b3c-400a-ba18-eab7b2b66050",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"withdraw"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/xml",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "<Data>\n    <AccountID>801921dd-31e1-45b3-a177-bef5964de42d</AccountID>\n    <Amount>350</Amount>\n    <TransactionID>cad1f8bf-de7e-495f-b4e1-2a65b34b050e</TransactionID>\n    <Status>pending</Status>\n    <Type>withdraw</Type>\n</Data>\n"
+				}
+			]
+		},
+		{
+			"name": "Deposit SETA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"account_id\": \"801921dd-31e1-45b3-a177-bef5964de42d\",\n    \"amount\": 350\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/deposit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"deposit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Withdraw SETA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"account_id\": \"801921dd-31e1-45b3-a177-bef5964de42d\",\n    \"amount\": 350\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/withdraw",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"withdraw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Transaction SETA",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"account_id\": \"801921dd-31e1-45b3-a177-bef5964de42d\",\n    \"transaction_id\": \"cad1f8bf-de7e-495f-b4e1-2a65b34b050e\",\n    \"status\": \"success\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Transactions SETA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/transaction/:transactionID",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"transaction",
+						":transactionID"
+					],
+					"variable": [
+						{
+							"key": "transactionID",
+							"value": "cad1f8bf-de7e-495f-b4e1-2a65b34b050e"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

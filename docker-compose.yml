@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - GATEWAY_A_ENDPOINT=https://eac422c8-0b3c-400a-ba18-eab7b2b66050.mock.pstmn.io
+      - GATEWAY_B_ENDPOINT=https://eac422c8-0b3c-400a-ba18-eab7b2b66050.mock.pstmn.io
+      - DATABASE_DSN=postgresql://postgres@db:5432/seta?sslmode=disable
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: seta
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./schema:/docker-entrypoint-initdb.d
+
+volumes:
+  postgres_data:

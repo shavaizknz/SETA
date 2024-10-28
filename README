@@ -1,0 +1,68 @@
+# Senior Engineer Technical Assessment (SETA)
+
+## Overview
+This project is a GoLang application that is a echo server that listens on port 8080. It is a payment gateway service that integrates with multiple payment gateways. It manages transactions (creating deposits/withdrawals), supports payment gateways that are RESTful and SOAP based and is also resillient to failures on payment gateways. 
+
+Out of the box there are two payment gateways that are supported:
+1. RESTful Payment Gateway (Payment Gateway A)
+2. SOAP Payment Gateway (Payment Gateway B)
+
+There are APIs exposed to create transactions as well as APIs to update the status of the transaction. Adding a new payment gateway is as simple as implementing the `PaymentGateway` interface and registering the new payment gateway in the `main.go` file.
+
+
+## High Level Design
+The application is designed to be modular and extensible. The main components of the application are:
+1. `main.go` - The entry point of the application. It initializes the server and registers the payment gateways.
+2. `pkg/controllers` - Contains the controllers that handle the requests and responses (callbacks).
+3. `pkg/clients/paymentgateway` - Contains a client interface that is implemented by the payment gateways. This is used to abstract the payment gateway implementation from the controllers.
+4. `pkg/config` - Contains the configuration for the application (settings).
+5. `pkg/model` - Contains the models for the controllers, domains (transactions) and payment gateway requests and responses models.
+6. `pkg/handler` - Contains the handlers for the APIs.
+
+
+## Installation
+To run the application, you need to have Go installed on your machine. You can download Go from [here](https://golang.org/dl/).
+
+You can use docker to run the application. To build the docker image, run the following command:
+`docker-compose up --build`
+
+To run the application without docker, run the following command:
+```
+go mod tidy
+go run .
+```
+
+## Configuration
+The application uses environment variables for configuration. The following environment variables are used:
+1. `GATEWAY_A_ENDPOINT` - The endpoint for Payment Gateway A.
+2. `GATEWAY_B_ENDPOINT` - The endpoint for Payment Gateway B.
+3. `DATABASE_DSN` - The DSN for the database.
+
+You can set these environment variables in the `.env` file. If you are running the application using docker, you can set these environment variables in the `docker-compose.yml` file.
+
+You can use Postman Mock Server to mock the payment gateways. The Postman collection is available in the `postman` directory. It also contains the endpoints for the callbacks (create transaction and edit transaction status etc.).
+
+## Database
+The application uses a PostgreSQL database to store the transactions. The database schema is available in the `schema` directory. You can use the `schema.sql` file to create the database schema.
+
+## APIs
+The application exposes the following APIs:
+1. `POST /deposit` - Creates a deposit transaction.
+2. `POST /withdraw` - Creates a withdraw transaction.
+3. `PUT /transaction` - Updates the status of the transaction.
+4. `GET /transaction/:transaction_id` - Gets the transaction details by transaction ID.
+
+The OpenAPI specification is available in the `SETA/docs` directory.
+
+To regenerate the OpenAPI specification, run the following command:
+```
+~/go/bin/swag init --parseDependency --overridesFile .swaggo
+```
+
+## Testing
+The application has unit tests and integration tests. To run the tests, run the following command:
+```
+go test ./...
+```
+
+Tests are currently setup for the integration between service, payment gateways and database. The tests specfically test the mechanism of handling downtime of payment gateways.
